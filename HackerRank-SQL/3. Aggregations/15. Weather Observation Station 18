@@ -1,0 +1,9 @@
+Problem - https://www.hackerrank.com/challenges/weather-observation-station-18/problem
+
+Solution - 
+SELECT Round(Abs(p1_a - p2_c) + Abs(p1_b - p2_d), 4) 
+FROM   (SELECT Min(lat_n)  AS P1_a, 
+               Min(long_w) AS P1_b, 
+               Max(lat_n)  AS P2_c, 
+               Max(long_w) AS P2_d 
+        FROM   station); 

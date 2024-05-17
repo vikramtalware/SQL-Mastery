@@ -1,0 +1,6 @@
+Problem - https://www.hackerrank.com/challenges/weather-observation-station-1
+
+Solution -
+SELECT city, 
+       state 
+FROM   station; 

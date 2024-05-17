@@ -1,0 +1,8 @@
+Problem - https://www.hackerrank.com/challenges/weather-observation-station-12/problem
+
+Solution -
+SELECT DISTINCT city 
+FROM   station 
+WHERE  Substr(Lower(city), 1, 1) NOT IN ( 'a', 'e', 'i', 'o', 'u' ) 
+       AND Substr(Lower(city), -1, 1) NOT IN ( 'a', 'e', 'i', 'o', 'u' ) 
+ORDER  BY city; 

@@ -1,0 +1,27 @@
+Problem - https://www.hackerrank.com/challenges/full-score/problem
+
+Solution - 
+SELECT B.hacker_id, 
+       B.name 
+FROM   (SELECT DISTINCT A.hacker_id, 
+                        A.name, 
+                        Count(A.challenge_id) over (PARTITION BY A.hacker_id) AS challenge_count 
+        FROM   (SELECT s.hacker_id, 
+                       h.name, 
+                       s.challenge_id, 
+                       s.score AS achieved_score, 
+                       c.difficulty_level, 
+                       d.score AS required_score 
+                FROM   submissions s, 
+                       hackers h, 
+                       challenges c, 
+                       difficulty d 
+                WHERE  s.score > 10 
+                       AND s.hacker_id = h.hacker_id 
+                       AND s.challenge_id = c.challenge_id 
+                       AND c.difficulty_level = d.difficulty_level 
+                ORDER  BY s.hacker_id)A 
+        WHERE  A.achieved_score = A.required_score 
+        ORDER  BY challenge_count DESC, 
+                  A.hacker_id ASC)B 
+WHERE  B.challenge_count > 1; 

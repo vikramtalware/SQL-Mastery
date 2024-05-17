@@ -1,0 +1,18 @@
+Problem - https://www.hackerrank.com/challenges/contest-leaderboard/problem
+
+Solution - 
+SELECT A.hacker_id, 
+       A.name, 
+       SUM(A.m_score) AS TOTAL_SCORE 
+FROM   (SELECT DISTINCT H.hacker_id, 
+                        H.name, 
+                        S.challenge_id, 
+                        Max(S.score) over (PARTITION BY H.hacker_id, S.challenge_id) AS M_SCORE 
+        FROM   hackers H, 
+               submissions S 
+        WHERE  S.hacker_id = H.hacker_id)A 
+WHERE  A.m_score > 0 
+GROUP  BY A.hacker_id, 
+          A.name 
+ORDER  BY total_score DESC, 
+          A.hacker_id ASC; 

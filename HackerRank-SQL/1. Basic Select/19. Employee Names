@@ -1,0 +1,6 @@
+Problem - https://www.hackerrank.com/challenges/name-of-employees/problem
+
+Solution -
+SELECT name 
+FROM   employee 
+ORDER  BY name ASC; 

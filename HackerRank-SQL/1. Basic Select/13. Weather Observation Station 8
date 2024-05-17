@@ -1,0 +1,8 @@
+Problem - https://www.hackerrank.com/challenges/weather-observation-station-8
+
+Solution -
+SELECT DISTINCT city 
+FROM   station 
+WHERE  Substr(Lower(city), -1, 1) IN ( 'a', 'e', 'i', 'o', 'u' ) 
+       AND Substr(Lower(city), 1, 1) IN ( 'a', 'e', 'i', 'o', 'u' ) 
+ORDER  BY city; 

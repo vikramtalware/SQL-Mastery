@@ -1,0 +1,8 @@
+Problem - https://www.hackerrank.com/challenges/more-than-75-marks/problem
+
+Solution - 
+SELECT name 
+FROM   students 
+WHERE  marks > 75 
+ORDER  BY Substr(Lower(name), -3), 
+          id; 

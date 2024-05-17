@@ -1,0 +1,9 @@
+Problem - https://www.hackerrank.com/challenges/weather-observation-station-19/problem
+
+Solution -
+SELECT Round(Sqrt(Power(p2_c - p1_a, 2) + Power(p2_d - p1_b, 2)), 4) 
+FROM   (SELECT Min(lat_n)  AS P1_a, 
+               Min(long_w) AS P1_b, 
+               Max(lat_n)  AS P2_c, 
+               Max(long_w) AS P2_d 
+        FROM   station); 

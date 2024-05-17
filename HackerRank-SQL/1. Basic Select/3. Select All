@@ -1,0 +1,5 @@
+Problem - https://www.hackerrank.com/challenges/select-all-sql
+
+Solution - 
+SELECT * 
+FROM   city; 

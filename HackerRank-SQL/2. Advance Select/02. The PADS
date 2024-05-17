@@ -1,0 +1,13 @@
+Problem - https://www.hackerrank.com/challenges/the-pads/problem
+
+Solution -
+SELECT name ||'('||Substr(Upper(occupation), 1, 1) ||')' 
+FROM   occupations 
+ORDER  BY name; 
+
+SELECT 'There are a total of ' ||a||' '||Lower(b)||'s.' 
+FROM   (SELECT Lower(occupation) AS B, 
+               Count(occupation) AS A 
+        FROM   occupations 
+        GROUP  BY occupation 
+        ORDER  BY a, b); 

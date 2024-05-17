@@ -1,0 +1,6 @@
+Problem - https://www.hackerrank.com/challenges/revising-aggregations-the-count-function/problem
+
+Solution -
+SELECT Count(name) 
+FROM   city 
+WHERE  population > 100000; 

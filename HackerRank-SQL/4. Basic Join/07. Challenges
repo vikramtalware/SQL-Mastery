@@ -1,0 +1,22 @@
+Problem - https://www.hackerrank.com/challenges/challenges/problem
+
+Solution - 
+WITH  challenges_per_hacker
+     AS (SELECT DISTINCT h.hacker_id, 
+                         h.NAME, 
+                         Count(challenge_id) OVER (partition BY h.hacker_id) challenge_counts 
+         FROM   hackers h, 
+                challenges c 
+         WHERE  h.hacker_id = c.hacker_id) 
+SELECT hacker_id, 
+       NAME, 
+       challenge_counts 
+FROM   challenges_per_hacker 
+WHERE  challenge_counts = (SELECT Max(challenge_counts) 
+                           FROM   challenges_per_hacker) 
+        OR challenge_counts IN (SELECT challenge_counts 
+                                FROM   challenges_per_hacker 
+                                GROUP  BY challenge_counts 
+                                HAVING Count(challenge_counts) = 1) 
+ORDER  BY challenge_counts DESC, 
+          hacker_id ASC; 

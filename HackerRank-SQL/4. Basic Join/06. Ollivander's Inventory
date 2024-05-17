@@ -1,0 +1,19 @@
+Problem - https://www.hackerrank.com/challenges/harry-potter-and-wands/problem
+
+Solution -
+SELECT id, 
+       age, 
+       coins_needed, 
+       power 
+FROM   (SELECT w.id, 
+               wp.age, 
+               w.coins_needed, 
+               Min(w.coins_needed) over (PARTITION BY w.code, w.power) AS min_coins_needed, 
+               w.power 
+        FROM   wands w, 
+               wands_property wp 
+        WHERE  w.code = wp.code 
+               AND wp.is_evil = 0) 
+WHERE  coins_needed = min_coins_needed 
+ORDER  BY power DESC, 
+          age DESC; 

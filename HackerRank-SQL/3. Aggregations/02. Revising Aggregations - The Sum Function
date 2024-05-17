@@ -1,0 +1,6 @@
+Problem - https://www.hackerrank.com/challenges/revising-aggregations-sum/problem
+
+Solution -
+SELECT SUM(population) 
+FROM   city 
+WHERE  district = 'California'; 

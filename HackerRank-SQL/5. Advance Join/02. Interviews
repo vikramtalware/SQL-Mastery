@@ -1,0 +1,32 @@
+Problem - https://www.hackerrank.com/challenges/interviews/problem
+
+Solution - 
+SELECT DISTINCT contest_id, 
+                hacker_id, 
+                name, 
+                SUM(total_submissions) over (PARTITION BY contest_id, hacker_id, name), 
+                SUM(total_accepted_submissions) over (PARTITION BY contest_id, hacker_id, name), 
+                SUM(total_views) over (PARTITION BY contest_id, hacker_id, name), 
+                SUM(total_unique_views) over (PARTITION BY contest_id, hacker_id, name) 
+FROM   (SELECT CO.contest_id, 
+               CO.hacker_id, 
+               CO.name, 
+               (SELECT SUM(total_submissions) 
+                FROM   submission_stats 
+                WHERE  challenge_id = CH.challenge_id) AS TOTAL_SUBMISSIONS, 
+               (SELECT SUM(total_accepted_submissions) 
+                FROM   submission_stats 
+                WHERE  challenge_id = CH.challenge_id) AS 
+               TOTAL_ACCEPTED_SUBMISSIONS, 
+               (SELECT SUM(total_views) 
+                FROM   view_stats 
+                WHERE  challenge_id = CH.challenge_id) AS TOTAL_VIEWS, 
+               (SELECT SUM(total_unique_views) 
+                FROM   view_stats 
+                WHERE  challenge_id = CH.challenge_id) AS TOTAL_UNIQUE_VIEWS 
+        FROM   contests CO, 
+               colleges CL, 
+               challenges CH 
+        WHERE  CO.contest_id = CL.contest_id 
+               AND CL.college_id = CH.college_id) CONTESTS 
+ORDER  BY contest_id; 

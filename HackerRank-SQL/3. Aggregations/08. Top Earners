@@ -1,0 +1,10 @@
+Problem - https://www.hackerrank.com/challenges/earnings-of-employees/problem
+
+Solution - 
+SELECT * 
+FROM   (SELECT Max(months * salary) AS MAX_EARNINGS, 
+               Count(employee_id) 
+        FROM   employee 
+        GROUP  BY months * salary 
+        ORDER  BY max_earnings DESC) 
+WHERE  ROWNUM = 1; 

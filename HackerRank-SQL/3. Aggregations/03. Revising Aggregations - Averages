@@ -1,0 +1,6 @@
+Problem - https://www.hackerrank.com/challenges/revising-aggregations-the-average-function/problem
+
+Solution -
+SELECT Avg(population) 
+FROM   city 
+WHERE  district = 'California'; 

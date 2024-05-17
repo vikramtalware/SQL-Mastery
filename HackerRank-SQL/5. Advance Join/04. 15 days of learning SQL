@@ -1,0 +1,36 @@
+WITH hackers_with_consecutive_subs AS
+(SELECT submission_date
+      ,COUNT(DISTINCT hacker_id) unique_count
+ FROM (SELECT DISTINCT
+             a.hacker_id
+            ,a.submission_date 
+            ,ROW_NUMBER() OVER(PARTITION BY a.hacker_id ORDER BY a.submission_date ASC) subdate_rowno
+      FROM (SELECT submission_date
+                  ,hacker_id 
+            FROM submissions 
+            GROUP BY submission_date
+                    ,hacker_id)a)b
+ WHERE b.subdate_rowno >= DAY(b.submission_date) 
+ GROUP BY submission_date)
+
+,hackers_with_max_subs_on_each_day AS
+(SELECT submission_date
+       ,hacker_id
+       ,submission_count
+       ,RANK() OVER (PARTITION BY submission_date ORDER BY submission_count DESC, hacker_id ASC) rn
+ FROM (SELECT submission_date
+             ,hacker_id
+             ,COUNT(submission_date) as submission_count
+       FROM submissions
+       GROUP BY submission_date, hacker_id)a)
+
+SELECT a.submission_date
+      ,a.unique_count
+      ,b.hacker_id
+      ,h.name
+FROM hackers_with_consecutive_subs a
+JOIN hackers_with_max_subs_on_each_day b
+  ON a.submission_date = b.submission_date
+JOIN hackers h
+  ON h.hacker_id = b.hacker_id
+WHERE b.rn = 1;

@@ -1,0 +1,8 @@
+Problem - https://www.hackerrank.com/challenges/weather-observation-station-15/problem
+
+Solution -
+SELECT Round(long_w, 4) 
+FROM   station 
+WHERE  lat_n IN (SELECT Max(lat_n) 
+                 FROM   station 
+                 WHERE  lat_n < 137.2345); 

@@ -1,0 +1,12 @@
+WITH Recursive_CTE AS
+(SELECT 20 AS COUNTER
+ UNION ALL
+ SELECT counter - 1
+ FROM Recursive_CTE
+ WHERE counter > 0)
+
+SELECT REPLICATE('* ', counter)
+FROM Recursive_CTE
+
+
+/* Why not Try Changing Another File */

@@ -1,0 +1,21 @@
+Problem - https://www.hackerrank.com/challenges/the-company/problem
+
+Solution -
+SELECT DISTINCT C.company_code, 
+                C.founder, 
+                Count(DISTINCT LM.lead_manager_code), 
+                Count(DISTINCT SM.senior_manager_code), 
+                Count(DISTINCT M.manager_code), 
+                Count(DISTINCT E.employee_code) 
+FROM   company C, 
+       lead_manager LM, 
+       senior_manager SM, 
+       manager M, 
+       employee E 
+WHERE  C.company_code = LM.company_code 
+       AND LM.lead_manager_code = SM.lead_manager_code 
+       AND SM.senior_manager_code = M.senior_manager_code 
+       AND M.manager_code = E.manager_code 
+GROUP  BY C.company_code, 
+          C.founder 
+ORDER  BY C.company_code ASC; 

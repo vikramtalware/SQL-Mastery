@@ -1,0 +1,6 @@
+Problem - https://www.hackerrank.com/challenges/select-by-id
+
+Solution - 
+SELECT * 
+FROM   city 
+WHERE  id = 1661;

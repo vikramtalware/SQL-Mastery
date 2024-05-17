@@ -1,0 +1,20 @@
+Problem - https://www.hackerrank.com/challenges/weather-observation-station-5
+
+Solution -
+SELECT * 
+FROM   (SELECT city, 
+               Min(Length(city)) AS Shortest 
+        FROM   station 
+        GROUP  BY city 
+        ORDER  BY shortest ASC, 
+                  city) 
+WHERE  ROWNUM = 1; 
+
+SELECT * 
+FROM   (SELECT city, 
+               Max(Length(city)) AS Longest 
+        FROM   station 
+        GROUP  BY city 
+        ORDER  BY longest DESC, 
+                  city) 
+WHERE  ROWNUM = 1; 

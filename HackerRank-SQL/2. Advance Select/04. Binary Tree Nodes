@@ -1,0 +1,13 @@
+Problem - https://www.hackerrank.com/challenges/binary-search-tree-1/problem
+
+Solution - 
+SELECT n, 
+       ( CASE 
+           WHEN p IS NULL THEN 'Root' 
+           WHEN NOT EXISTS (SELECT p 
+                            FROM   bst B 
+                            WHERE  B.p = A.n) THEN 'Leaf' 
+           ELSE 'Inner' 
+         END ) 
+FROM   bst A 
+ORDER  BY n; 

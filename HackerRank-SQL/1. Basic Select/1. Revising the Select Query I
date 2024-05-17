@@ -1,0 +1,8 @@
+Problem - https://www.hackerrank.com/challenges/revising-the-select-query
+
+Solution -
+
+SELECT * 
+FROM   city 
+WHERE  population > 100000 
+       AND countrycode = 'USA'; 

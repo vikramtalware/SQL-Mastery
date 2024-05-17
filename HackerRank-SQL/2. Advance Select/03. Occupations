@@ -1,0 +1,16 @@
+Problem - https://www.hackerrank.com/challenges/occupations/problem
+
+Solution - 
+SELECT   doctor, 
+         professor, 
+         singer, 
+         actor 
+FROM     (SELECT   name, 
+                   occupation, 
+                   Row_number() over (PARTITION BY occupation ORDER BY name) rw_num 
+          FROM     occupations) 
+          PIVOT   (min(name) FOR occupation IN ('Doctor'    AS doctor,
+                                                'Professor' AS professor,
+                                                'Singer'    AS singer,
+                                                'Actor'     AS actor))
+ORDER BY rw_num;

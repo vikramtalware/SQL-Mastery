@@ -1,0 +1,5 @@
+Problem - https://www.hackerrank.com/challenges/the-blunder/problem
+
+Solution -
+SELECT Ceil(Avg(salary) - Avg(Replace(salary, 0, ''))) 
+FROM   employees; 

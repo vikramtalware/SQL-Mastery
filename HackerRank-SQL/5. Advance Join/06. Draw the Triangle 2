@@ -1,0 +1,12 @@
+WITH Recursive_CTE AS
+(SELECT 1 AS COUNTER
+ UNION ALL
+ SELECT counter + 1
+ FROM Recursive_CTE
+ WHERE counter < 20)
+
+SELECT REPLICATE('* ', counter)
+FROM Recursive_CTE
+
+
+/* Test If This Change is pushed back to GIT */
