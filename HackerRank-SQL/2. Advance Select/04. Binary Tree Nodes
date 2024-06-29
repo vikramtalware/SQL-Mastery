@@ -11,3 +11,15 @@ SELECT n,
          END ) 
 FROM   bst A 
 ORDER  BY n; 
+
+
+SELECT 
+    node,
+    CASE 
+        WHEN parent IS NULL THEN 'Root'
+        WHEN node NOT IN 
+            (SELECT parent FROM tree WHERE parent IS NOT NULL) THEN 'Leaf'
+        WHEN node IN (SELECT parent FROM tree) AND parent IS NOT NULL THEN 'Inner'
+    END AS label 
+ from 
+    tree
