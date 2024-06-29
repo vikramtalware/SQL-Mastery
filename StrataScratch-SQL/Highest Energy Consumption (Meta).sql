@@ -1,4 +1,4 @@
-/* Link - */
+/* Link - https://platform.stratascratch.com/coding/10064-highest-energy-consumption?code_type=1 */
 
 WITH raw_data AS
 (SELECT date
