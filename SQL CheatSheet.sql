@@ -30,6 +30,10 @@ PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY column_name) AS median
 
 COALESCE()
 
+REDUCE()
+
+QUALIFY()
+
 -- MySQL
 SUBSTR(column_name, pos, len)
 
