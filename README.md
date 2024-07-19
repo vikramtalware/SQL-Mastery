@@ -3,3 +3,4 @@ Initiative demonstrating my expertise and commitment to mastering SQL, while als
 
 #### [HackerRank SQL Solutions](https://github.com/vikramtalware/SQL-Mastery/tree/main/HackerRank-SQL)
 #### [DataLemur SQL Solutions](https://github.com/vikramtalware/SQL-Mastery/tree/main/DataLemur-SQL)
+#### [StrataScratch SQL Solutions](https://platform.stratascratch.com/coding?code_type=1)
