@@ -5,7 +5,28 @@ WITH [RECURSIVE] CTE_name AS
  SELECT query --(Recursive query using CTE_name [with a termination condition])
 )
 SELECT * FROM CTE_name
+-- Example
+WITH RECURSIVE employee_hierarchy AS (
+  SELECT employee_id,
+         first_name,
+         last_name,
+         reports_to,
+         'Owner' AS path
+  FROM employee
+  WHERE reports_to IS NULL
+  UNION ALL 
+  SELECT e.employee_id,
+         e.first_name,
+         e.last_name,
+         e.reports_to,
+         employee_hierarchy.path || '->' || e.last_name
+  FROM employee e 
+  JOIN employee_hierarchy 
+    ON e.reports_to = employee_hierarchy.employee_id)
 
+SELECT *
+FROM employee_hierarchy;
+	
 -- Display 1 to 10 numbers w/o using any in-built functions
 WITH RECURSIVE numbers AS
 	(SELECT 1 as n
@@ -20,6 +41,8 @@ UNNEST(string_to_array(column_name, 'delimiter'))
 
 array_length(string_to_array(column_name, 'delimiter'),1)
 
+STRING_AGG(passenger_name, ', ')
+	
 generate_series(1,10,2); -- 2 is a step 1,3,5,etc
 
 POSIX lower(column_name) ~ '\y(plum|cherry|rose|hazelnut)\y'
