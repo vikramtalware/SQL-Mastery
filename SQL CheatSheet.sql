@@ -78,11 +78,12 @@ INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, 
 UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
 DELETE FROM table_name WHERE condition;
 TRUNCATE TABLE table_name;
+
 ROWS or RANGE- specifying rows or range.
 PRECEDING – get rows before the current one.
 FOLLOWING – get rows after the current one.
 UNBOUNDED – when used with PRECEDING or FOLLOWING, it returns all before or after CURRENT ROW
-
+Ex: (ORDER BY col_name ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)
 
 Subqueries vs Correlated Queries (Find Example)
 A correlated subquery is a subquery that refers to a column from the outer query. 
