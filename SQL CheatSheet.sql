@@ -44,12 +44,11 @@ array_length(regexp_split_to_array(column_name, '\s+'), 1) -- '\s+' (one or more
 regexp_replace(column_name, '[^a-zA-Z0-9 ]', '', 'g') -- 'g' globally
 
 STRING_AGG(passenger_name, ', ')
-	
 generate_series(1,10,2); -- 2 is a step 1,3,5,etc
 
-POSIX lower(column_name) ~ '\y(plum|cherry|rose|hazelnut)\y'
 
-EXTRACT('year' from column_name)
+
+EXTRACT('year' from column_name) DATE_PART('', col_name), DATE_TRUNC('', col_name)
 
 PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY column_name) AS median
 
