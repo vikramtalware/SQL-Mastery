@@ -39,7 +39,9 @@ SELECT * FROM numbers
 -- PostGRESQL
 UNNEST(string_to_array(column_name, 'delimiter'))
 
-array_length(string_to_array(column_name, 'delimiter'),1)
+array_length(string_to_array(column_name, 'delimiter'),1) -- 1 dimension array
+array_length(regexp_split_to_array(column_name, '\s+'), 1) -- '\s+' (one or more whitespaces)
+regexp_replace(column_name, '[^a-zA-Z0-9 ]', '', 'g') -- 'g' globally
 
 STRING_AGG(passenger_name, ', ')
 	
