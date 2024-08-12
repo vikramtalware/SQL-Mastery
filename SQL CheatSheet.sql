@@ -67,6 +67,7 @@ SUBSTRING_INDEX(column_name, 'delimiter', length)
 REGEX lower(column_name) REGEX '([^a-z])(plum|rose|cherry|hazelnut)([^a-z])'
 
 -- MEDIAN
+PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY column_name)
 WITH get_median AS (
   SELECT y
        , row_number() OVER(ORDER BY y ASC) AS rn_asc
