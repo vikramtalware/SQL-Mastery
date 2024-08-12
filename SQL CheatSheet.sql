@@ -46,7 +46,11 @@ regexp_replace(column_name, '[^a-zA-Z0-9 ]', '', 'g') -- 'g' globally
 STRING_AGG(passenger_name, ', ')
 generate_series(1,10,2); -- 2 is a step 1,3,5,etc
 
-
+ROWS or RANGE- specifying rows or range.
+PRECEDING – get rows before the current one.
+FOLLOWING – get rows after the current one.
+UNBOUNDED – when used with PRECEDING or FOLLOWING, it returns all before or after CURRENT ROW
+Ex: (ORDER BY col_name ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)
 
 EXTRACT('year' from column_name) DATE_PART('', col_name), DATE_TRUNC('', col_name)
 
@@ -80,12 +84,6 @@ INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, 
 UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
 DELETE FROM table_name WHERE condition;
 TRUNCATE TABLE table_name;
-
-ROWS or RANGE- specifying rows or range.
-PRECEDING – get rows before the current one.
-FOLLOWING – get rows after the current one.
-UNBOUNDED – when used with PRECEDING or FOLLOWING, it returns all before or after CURRENT ROW
-Ex: (ORDER BY col_name ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)
 
 Subqueries vs Correlated Queries (Find Example)
 A correlated subquery is a subquery that refers to a column from the outer query. 
